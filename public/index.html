@@ -3,7 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
+    <meta charset="UTF-8"/>
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/header.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css"/>
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,9 +38,17 @@
           <h2 id="name"><span>Felix</span> Rioux Sabourin</h2>
       </div>
     </header>
-
     <main class="container">
       <!-- Page-specific (main) content here -->
+      <section class="new-tweet">
+        <form method="POST" action="/tweets/" >
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <div class="form-footer">
+            <input type="submit" value="Tweet">
+            <span class="counter">140</span>
+          </div>
+        </form>
+      </section>
       <divs>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget leo turpis. Praesent vitae quam vel turpis tristique fermentum. Sed dictum egestas neque eget porta. In et urna arcu. Aenean pretium magna ac fermentum aliquet. Sed ut massa eget sapien porttitor elementum et sit amet ex. Maecenas eu eleifend orci, vel iaculis nibh. Phasellus suscipit, ante ut ultricies lacinia, risus enim volutpat odio, eu hendrerit lacus risus vel erat. Donec quis purus est. Praesent pellentesque lectus lobortis dapibus viverra. Phasellus dignissim enim dui. Nunc sodales sit amet lorem non cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
