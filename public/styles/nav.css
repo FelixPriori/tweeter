@@ -1,0 +1,30 @@
+nav {
+  position: fixed;
+  top: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 10;
+  background-color: #4056A1;
+  color: #FFF;
+  display: flex;
+  padding: 1.5em;
+}
+
+nav span {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#title {
+  font-family: 'Bungee';
+}
+
+#write {
+  margin-left: auto;
+}
+
+/* .placeholder{
+  position: relative;
+  top: 120px;
+} */
