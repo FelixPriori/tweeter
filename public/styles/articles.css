@@ -1,0 +1,49 @@
+.tweet-container {
+  display:flex;
+  flex-direction: column;
+  height: 15em;
+  background-color: #f4f1ec;
+  border: 0.20em solid black;
+  justify-content: space-between;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  font-size: larger;
+}
+
+.tweet-container header {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.tweet-body {
+  margin: 0.5em;
+  font-size: 1.25em;
+}
+
+.tweet-container footer {
+  display: flex;
+  flex-direction: row;
+  border-top: 0.20em solid black;
+  height: 3em;
+  padding: 0.5em 0em;
+  margin: 0.5em;
+}
+
+.tweeter-username, .tweet-icons{
+  margin-left: auto;
+}
+
+.tweet-container:hover {
+  box-shadow: 0.5em 0.5em 0 rgba(0, 0, 0, 0.15);
+}
+
+.tweeter-username {
+  display: none;
+}
+
+.tweet-container:hover .tweeter-username {
+  color: silver;
+  font-size: 1.5em;
+  display: block;
+}
