@@ -43,7 +43,7 @@
     <main class="container">
       <!-- Page-specific (main) content here -->
       <section class="new-tweet">
-        <form method="POST" action="/tweets/" >
+        <form id="tweet-form" method="POST" action="/tweets/" >
           <textarea id="tweet" name="text" placeholder="What are you humming about?"></textarea>
           <div class="form-footer">
             <input type="submit" value="Tweet">
@@ -51,7 +51,7 @@
           </div>
         </form>
       </section>
-      <!-- Display of tweets -->"
+      <!-- Display of tweets -->
       <section id="tweet-container">
       </section>
     </main>
