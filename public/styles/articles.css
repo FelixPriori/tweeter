@@ -1,4 +1,4 @@
-.tweet-container {
+.tweet-element {
   display:flex;
   flex-direction: column;
   height: 15em;
@@ -10,10 +10,15 @@
   font-size: larger;
 }
 
-.tweet-container header {
+.tweet-element header {
   display: flex;
   flex-direction: row;
   margin: 0.5em;
+}
+
+.tweeter-name{
+  align-self: center;
+  margin-left: 1em;
 }
 
 .tweet-body {
@@ -21,7 +26,7 @@
   font-size: 1.25em;
 }
 
-.tweet-container footer {
+.tweet-element footer {
   display: flex;
   flex-direction: row;
   border-top: 0.20em solid black;
@@ -34,7 +39,7 @@
   margin-left: auto;
 }
 
-.tweet-container:hover {
+.tweet-element:hover {
   box-shadow: 0.5em 0.5em 0 rgba(0, 0, 0, 0.15);
 }
 
