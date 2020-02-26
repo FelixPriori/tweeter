@@ -98,9 +98,15 @@ $(document).ready(() => {
 
   const isValid = tweet => {
     if (tweet.length > 140) {
-      alert('Tweet is too long.');
+      $('#too-long').slideDown();
+      setTimeout(() => {
+        $('#too-long').slideUp();
+      }, 5000);
     } else if (tweet.length === 0) {
-      alert('Please write something in your tweet.');
+      $('#no-text').slideDown();
+      setTimeout(() => {
+        $('#no-text').slideUp();
+      }, 5000);
     } else {
       return true;
     }

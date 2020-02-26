@@ -1,0 +1,17 @@
+.error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  border: red solid;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+
+#no-text {
+  display:none;
+}
+
+#too-long {
+  display:none;
+}
