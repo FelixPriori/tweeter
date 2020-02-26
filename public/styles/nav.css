@@ -14,10 +14,12 @@ nav span {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  align-self: center;
 }
 
 #title {
   font-family: 'Bungee';
+  align-self: center;
   font-weight: 700;
 }
 

@@ -47,7 +47,7 @@
   display: none;
 }
 
-.tweet-container:hover .tweeter-username {
+.tweet-element:hover .tweeter-username {
   color: silver;
   font-size: 1.5em;
   display: block;
