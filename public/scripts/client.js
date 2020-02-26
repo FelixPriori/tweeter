@@ -26,8 +26,10 @@ $(document).ready(() => {
 
   $('#up').on('click', () => {
     $("html, body").animate({ scrollTop: "0" }, 1000);
-    $('.new-tweet').slideDown(1500);
-    $('#tweet').focus();
+    setTimeout(() => {
+      $('.new-tweet').slideDown();
+      $('#tweet').focus();
+    }, 1000);
   });
   
   const formatTime = timestamp => {
