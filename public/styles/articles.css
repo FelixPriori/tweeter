@@ -1,3 +1,7 @@
+.hide {
+  display:none;
+}
+
 .tweet-element {
   display:flex;
   flex-direction: column;
@@ -24,6 +28,7 @@
 .tweet-body {
   margin: 0.5em;
   font-size: 1.25em;
+  word-break: break-all;
 }
 
 .tweet-element footer {

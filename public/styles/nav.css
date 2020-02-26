@@ -25,5 +25,21 @@ nav span {
 
 #write {
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+#arrow {
+  text-decoration: none;
+  justify-self: center;
+  border: none;
+  background-color: inherit;
+  color: #f79c00;
+  font-size: xx-large;
+}
+
+#arrow:hover{
+  color: white;
+  font-weight: bolder;
+}

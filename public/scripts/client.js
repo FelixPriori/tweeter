@@ -7,6 +7,12 @@
 
 $(document).ready(() => {
 
+  $('.new-tweet').hide();
+  $('#arrow').click(() => {
+    $('.new-tweet').slideToggle();
+    $('#tweet').focus();
+  });
+
   $('.footer-button').hide();
   $(window).scroll(() => {
     if ($(window).scrollTop() > 400) {
