@@ -79,9 +79,10 @@ $(document).ready(() => {
   });
 
   const loadTweets = () => {
-    $.get('/tweets', function(tweets) {
-      renderTweets(tweets);
-    });
+    $.ajax({
+      method: 'GET',
+      url: '/tweets',
+    }).done(tweets => renderTweets(tweets));
   };
 
   loadTweets();
