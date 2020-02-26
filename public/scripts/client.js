@@ -52,6 +52,7 @@ $(document).ready(() => {
     // takes return value and appends it to the tweets container
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
+      console.log($tweet)
       $('#tweet-container').append($tweet);
     });
   };
