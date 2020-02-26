@@ -69,13 +69,32 @@ $(document).ready(() => {
     // takes return value and appends it to the tweets container
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      console.log($tweet)
       $('#tweet-container').append($tweet);
     });
   };
 
+  const isValid = tweet => {
+    if (tweet.length > 140) {
+      alert('Tweet is too long.');
+    } else if (tweet.length === 0) {
+      alert('Please write something in your tweet.');
+    } else {
+      return true;
+    }
+  }
+
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
+    const tweet = $('#tweet')[0].value;
+    if(isValid(tweet)) {
+      $.ajax({
+        method: 'POST',
+        url: '/tweets',
+        data: {text: tweet},
+      }).then(() => {
+        loadTweets();
+      });
+    }
   });
 
   const loadTweets = () => {
