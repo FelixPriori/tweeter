@@ -6,6 +6,20 @@
 */
 
 $(document).ready(() => {
+
+  $('.footer-button').hide();
+  $(window).scroll(() => {
+    if ($(window).scrollTop() > 400) {
+      $('.footer-button').fadeIn('fast');
+    } else {
+      $('.footer-button').fadeOut('fast');
+    }
+  });
+
+  $('#up').on('click', () => {
+    $("html, body").animate({ scrollTop: "0" }, 1000);
+    $('.footer-button').addClass('hide');
+  });
   
   const formatTime = timestamp => {
     const timestampNow = new Date();
@@ -69,7 +83,7 @@ $(document).ready(() => {
     // takes return value and appends it to the tweets container
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      $('#tweet-container').append($tweet);
+      $('#tweet-container').prepend($tweet);
     });
   };
 
@@ -86,6 +100,7 @@ $(document).ready(() => {
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const tweet = $('#tweet')[0].value;
+    $('#tweet')[0].value = '';
     if(isValid(tweet)) {
       $.ajax({
         method: 'POST',
