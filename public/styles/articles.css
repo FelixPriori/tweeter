@@ -12,6 +12,7 @@
   margin: 2em 0;
   padding: 0.5em 1em;
   font-size: larger;
+  opacity: 50%;
 }
 
 .tweet-element header {
@@ -46,6 +47,7 @@
 
 .tweet-element:hover {
   box-shadow: 0.5em 0.5em 0 rgba(0, 0, 0, 0.15);
+  opacity: 100%;
 }
 
 .tweeter-username {
