@@ -24,26 +24,43 @@ $(document).ready(() => {
   }
 
   const createTweetElement = tweet => {
+    //  calculating time & returning formating
     const time = formatTime(tweet["created_at"]);
-    const htmlifyTweet = `
-      <article class="tweet-element">
-        <header>
-          <img class="avatar" src=${tweet["user"]["avatars"]}/>
-          <div class="tweeter-name">
-            ${tweet["user"]["name"]}
-          </div>
-          <div class="tweeter-username">
-            ${tweet["user"]["handle"]}
-          </div>
-        </header>
-        <div class="tweet-body">${tweet["content"]["text"]}</div>
-        <footer>
-          <div class="tweet-time">${time}</div>
-          <div class="tweet-icons">🚩🔄❤️</div>
-        </footer>
-      </article>
-    `;
-    return htmlifyTweet;
+
+    // constructing the tweet's html elements w/ class names
+    const $article = $('<article class="tweet-element">');
+    const $header = $('<header>');
+    const $img = $('<img class="avatar"/>');
+    const $nameDiv = $('<div class="tweeter-name">');
+    const $usernameDiv = $('<div class="tweeter-username">');
+    const $bodyDiv = $('<div class="tweet-body">');
+    const $footer = $('<footer>');
+    const $timeDiv = $('<div class="tweet-time">');
+    const $iconsDiv = $('<div class="tweet-icons">');
+
+    // assigning element's values
+    $img.attr("src", `${tweet["user"]["avatars"]}`);
+    $nameDiv.text(`${tweet["user"]["name"]}`);
+    $usernameDiv.text(`${tweet["user"]["handle"]}`);
+    $bodyDiv.text(`${tweet["content"]["text"]}`);
+    $timeDiv.text(`${time}`);
+    $iconsDiv.text(`🚩🔄❤️`);
+  
+    // appending children elements to the corresponding parent
+    $header
+      .append($img)
+      .append($nameDiv)
+      .append($usernameDiv);
+    $footer
+      .append($timeDiv)
+      .append($iconsDiv);
+    $article
+      .append($header)
+      .append($bodyDiv)
+      .append($footer);
+
+    // returning the finished article
+    return $article;
   };
 
   const renderTweets = function(tweets) {
