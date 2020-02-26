@@ -17,14 +17,17 @@ $(document).ready(() => {
   $(window).scroll(() => {
     if ($(window).scrollTop() > 400) {
       $('.footer-button').fadeIn('fast');
+      $('#write').fadeOut('fast');
     } else {
       $('.footer-button').fadeOut('fast');
+      $('#write').fadeIn('fast');
     }
   });
 
   $('#up').on('click', () => {
     $("html, body").animate({ scrollTop: "0" }, 1000);
-    $('.footer-button').addClass('hide');
+    $('.new-tweet').slideDown(1500);
+    $('#tweet').focus();
   });
   
   const formatTime = timestamp => {

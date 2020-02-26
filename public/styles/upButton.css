@@ -16,3 +16,8 @@
   color: white;
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */  
 }
+
+#up:hover {
+  background-color: white;
+  color: #ff0900;
+}
