@@ -50,7 +50,7 @@
   opacity: 100%;
 }
 
-.tweeter-username {
+.tweeter-username, .tweet-icons {
   display: none;
 }
 
@@ -58,4 +58,12 @@
   color: silver;
   font-size: 1.5em;
   display: block;
+}
+
+.tweet-element:hover .tweet-icons {
+  display: block;
+}
+
+.tweet-icons i {
+  margin-left: 0.5em;
 }

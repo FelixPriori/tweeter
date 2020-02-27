@@ -33,6 +33,7 @@ $(document).ready(() => {
   });
   
   const formatTime = timestamp => {
+ 
     const timestampNow = new Date();
     const hours = Math.round(Math.abs(timestamp - timestampNow) / 36e5);
     if (hours > 24) {
@@ -43,7 +44,7 @@ $(document).ready(() => {
         return years === 1 ? `${years} year, ${daysLeft} days ago` : `${years} years, ${daysLeft} days ago`;
       }
       return days === 1 ? `${days} day ago` : `${days} days ago`;
-    }  else {
+    } else {
       return hours === 1 ? `${hours} hour ago` : `${hours} hours ago`;
     }
   }
@@ -62,6 +63,9 @@ $(document).ready(() => {
     const $footer = $('<footer>');
     const $timeDiv = $('<div class="tweet-time">');
     const $iconsDiv = $('<div class="tweet-icons">');
+    const $flagIcon = $('<i class="fa fa-flag icons">');
+    const $retweetIcon = $('<i class="fa fa-retweet icons">');
+    const $heartIcon = $('<i class="fa fa-heart icons">');
 
     // assigning element's values
     $img.attr("src", `${tweet["user"]["avatars"]}`);
@@ -69,13 +73,16 @@ $(document).ready(() => {
     $usernameDiv.text(`${tweet["user"]["handle"]}`);
     $bodyDiv.text(`${tweet["content"]["text"]}`);
     $timeDiv.text(`${time}`);
-    $iconsDiv.text(`🚩🔄❤️`);
   
     // appending children elements to the corresponding parent
     $header
       .append($img)
       .append($nameDiv)
       .append($usernameDiv);
+    $iconsDiv
+      .append($flagIcon)
+      .append($retweetIcon)
+      .append($heartIcon);
     $footer
       .append($timeDiv)
       .append($iconsDiv);
@@ -99,6 +106,9 @@ $(document).ready(() => {
   };
 
   const isValid = tweet => {
+    // checks if tweet is too big, or empty.
+    // displays error if either checks fail
+    // if both checks pass, returns true.
     if (tweet.length > 140) {
       $('#too-long').slideDown();
       setTimeout(() => {
@@ -115,21 +125,30 @@ $(document).ready(() => {
   }
 
   $('#tweet-form').submit(function(event) {
+    // prevent redirect default behaviour
+    event.preventDefault();
+
+    // characters reset to 140 - black upon submit
     const $counter = $('.counter');
     $counter.html(140).css('color', 'black');
-    event.preventDefault();
-    const tweet = $('#tweet')[0].value;
+
+    // tweet text is saved to a variable, then textarea is emptied
+    const $tweet = $('#tweet')[0].value;
     $('#tweet')[0].value = '';
-    if(isValid(tweet)) {
+
+    // if tweet is valid, make POST request
+    if(isValid($tweet)) {
       $.ajax({
         method: 'POST',
         url: '/tweets',
-        data: {text: tweet},
+        data: {text: $tweet},
       }).then(() => {
+        // after POST request, make GET request to render the tweet.
         $.ajax({
           method: 'GET',
           url: '/tweets'
         }).done(tweets => {
+          // we select the tweet that was just created and render it on page
           const $tweet = createTweetElement(tweets[tweets.length - 1]);
           $('#tweet-container').prepend($tweet);
         });
@@ -137,13 +156,13 @@ $(document).ready(() => {
     }
   });
 
+  // get request to load all tweets
   const loadTweets = () => {
     $.ajax({
       method: 'GET',
       url: '/tweets',
     }).done(tweets => renderTweets(tweets));
   };
-
   loadTweets();
 
 });
