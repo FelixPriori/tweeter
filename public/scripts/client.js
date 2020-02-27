@@ -7,14 +7,19 @@
 
 $(document).ready(() => {
 
+  // click event for the arrow which shows
+  // the new tweet form.
   $('.new-tweet').hide();
   $('#arrow').click(() => {
     $('.new-tweet').slideToggle();
     $('#tweet').focus();
   });
 
+  // scroll button for the up arrow
   $('.footer-button').hide();
   $(window).scroll(() => {
+    // appears when scrolling lower than 400px from top
+    // disappears when 400px and up
     if ($(window).scrollTop() > 400) {
       $('.footer-button').fadeIn('fast');
       $('#write').fadeOut('fast');
@@ -24,6 +29,7 @@ $(document).ready(() => {
     }
   });
 
+  // on click event for the up arrow
   $('#up').on('click', () => {
     $("html, body").animate({ scrollTop: "0" }, 1000);
     setTimeout(() => {
@@ -33,9 +39,10 @@ $(document).ready(() => {
   });
   
   const formatTime = timestamp => {
- 
+    // compares current time to tweet creation date;
     const timestampNow = new Date();
     const hours = Math.round(Math.abs(timestamp - timestampNow) / 36e5);
+    // determines the returned string based on number of hours.
     if (hours > 24) {
       const days = Math.round(hours / 24);
       if (days > 365) {
@@ -47,7 +54,7 @@ $(document).ready(() => {
     } else {
       return hours === 1 ? `${hours} hour ago` : `${hours} hours ago`;
     }
-  }
+  };
 
   const createTweetElement = tweet => {
     //  calculating time & returning formating
@@ -122,7 +129,7 @@ $(document).ready(() => {
     } else {
       return true;
     }
-  }
+  };
 
   $('#tweet-form').submit(function(event) {
     // prevent redirect default behaviour
@@ -137,7 +144,7 @@ $(document).ready(() => {
     $('#tweet')[0].value = '';
 
     // if tweet is valid, make POST request
-    if(isValid($tweet)) {
+    if (isValid($tweet)) {
       $.ajax({
         method: 'POST',
         url: '/tweets',
