@@ -115,6 +115,8 @@ $(document).ready(() => {
   }
 
   $('#tweet-form').submit(function(event) {
+    const $counter = $('.counter');
+    $counter.html(140).css('color', 'black');
     event.preventDefault();
     const tweet = $('#tweet')[0].value;
     $('#tweet')[0].value = '';
@@ -124,7 +126,13 @@ $(document).ready(() => {
         url: '/tweets',
         data: {text: tweet},
       }).then(() => {
-        loadTweets();
+        $.ajax({
+          method: 'GET',
+          url: '/tweets'
+        }).done(tweets => {
+          const $tweet = createTweetElement(tweets[tweets.length - 1]);
+          $('#tweet-container').prepend($tweet);
+        });
       });
     }
   });
