@@ -1,22 +1,28 @@
 @media only screen and (min-width: 1024px) {
 
   header.top {
-    width: 25%;
+    width: 30%;
     top: none;
     float: left;
     display: inline-flex;
-    margin: 10% 5%;
+    margin: 10% 0 0 5%;
     padding: 1em;
     text-overflow: unset;
     justify-content: center;
     height: 500px;
   }
 
+  .container, .new-tweet {
+    display: inline-block;
+  }
+
   .container {
+    margin: 2% 5%;
     width: 55%;
-    display: inline-flex;
-    float: right;
-    margin: 2% 2%;
+  }
+
+  .new-tweet {
+    width: 100%;
   }
 
 }
